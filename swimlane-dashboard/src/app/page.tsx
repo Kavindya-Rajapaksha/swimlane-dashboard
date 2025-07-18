@@ -8,12 +8,7 @@ export default function Home() {
       <div className="p-4">
         <ProjectCard />
       </div>
-      <div>
-      <SwimlaneTabs />
-    </div>
-    <div className="p-4">
-        <Board />
-      </div>
+    
     </div>
   );
 }
