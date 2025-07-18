@@ -9,11 +9,12 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import type { Task, Category, User } from "@/utils/types";
 
 type TaskCardProps = {
-  task: any;
-  categories: any[];
-  users: any[];
+  task: Task;
+  categories: Category[];
+  users: User[];
   columnColor: string;
 };
 
@@ -100,12 +101,14 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, categories }) => {
             <img src="/assets/Flash.svg" alt="plus" className="w-3 h-3" />
 
             <Typography variant="caption" color="grey.600">
-              {task.priority?.charAt(0).toUpperCase() + task.priority?.slice(1)}
+              {task.priority
+                ? task.priority.charAt(0).toUpperCase() + task.priority.slice(1)
+                : ""}
             </Typography>
           </Box>
         </Box>
 
-        {(task.hasImage ||
+        {(task.hasimg ||
           task.title.toLowerCase().includes("feedback") ||
           task.title.toLowerCase().includes("wireframe")) && (
           <Box

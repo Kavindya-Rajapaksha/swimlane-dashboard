@@ -17,7 +17,7 @@ export interface Task {
   updatedAt?: string;
   reports?: number;
   hasStream?: boolean;
-  hasImage?: boolean;
+  hasimg?: boolean;
   hasGroupCall?: boolean;
 }
 

@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useTaskStore } from "../store/useTaskStore";
 
-export default function Header({ onOpenSidebar }:any) {
+export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const { setSearchQuery: setStoreSearchQuery } = useTaskStore();
 

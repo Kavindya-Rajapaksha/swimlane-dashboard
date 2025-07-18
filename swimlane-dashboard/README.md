@@ -77,7 +77,7 @@ src/
   store/         # Zustand state management
   theme/         # Theme and color definitions
   utils/         # Utility functions
-public/assets/   # SVG icons and images
+public/assets/   # SVG icons and imgs
 ```
 
 ---
