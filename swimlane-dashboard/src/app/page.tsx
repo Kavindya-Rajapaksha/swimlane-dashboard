@@ -1,6 +1,7 @@
+'use client';
+
 import Board from "@/components/Board";
 import ProjectCard from "@/components/ProjectCard";
-import SwimlaneTabs from "@/components/SwimlaneTabs";
 
 export default function Home() {
   return (
@@ -8,7 +9,9 @@ export default function Home() {
       <div className="p-4">
         <ProjectCard />
       </div>
-    
+    <div>
+        <Board />
+      </div>
     </div>
   );
 }

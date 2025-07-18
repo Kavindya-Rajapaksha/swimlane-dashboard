@@ -3,13 +3,27 @@ import React, { useState, useCallback } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
+import { useTaskStore } from "../store/useTaskStore";
 
 export default function Header({ onOpenSidebar }:any) {
   const [searchQuery, setSearchQuery] = useState("");
+  const { setSearchQuery: setStoreSearchQuery } = useTaskStore();
 
+  const debouncedSearch = useCallback(
+    (query: string) => {
+      const timeoutId = setTimeout(() => {
+        setStoreSearchQuery(query);
+      }, 300);
+      return () => clearTimeout(timeoutId);
+    },
+    [setStoreSearchQuery]
+  );
 
-
- 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    debouncedSearch(query);
+  };
 
   return (
     <>
@@ -20,18 +34,6 @@ export default function Header({ onOpenSidebar }:any) {
         <div
   className="flex items-center pl-[35px] pr-[35px] w-screen h-[80px]"
 >
-
-          {/* Hamburger icon for small screens, before the logo */}
-          <button
-            onClick={onOpenSidebar}
-            className="block md:hidden mr-2 p-2 bg-white rounded shadow"
-            aria-label="Open sidebar"
-          >
-            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-          {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <img
               src="/assets/logo.svg"
@@ -42,14 +44,12 @@ export default function Header({ onOpenSidebar }:any) {
             <img
               src="/assets/LogoOnly.svg"
               alt="Logo Only"
-              className="h-10 w-10 md:hidden"
+              className="ml-10 h-10 w-10 md:hidden"
               style={{ minWidth: 20, minHeight: 20 }}
             />
           </div>
 
-          {/* Right: All actions */}
           <div className="flex items-center ml-auto gap-[20px]">
-            {/* Small screens: Create, search, icons */}
             <div className="flex items-center gap-[10px] sm:gap-[20px] md:hidden">
               <Button
                 variant="contained"
@@ -78,6 +78,7 @@ export default function Header({ onOpenSidebar }:any) {
                 placeholder="Search..."
                 size="small"
                 value={searchQuery}
+                onChange={handleSearchChange}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -146,6 +147,7 @@ export default function Header({ onOpenSidebar }:any) {
                 placeholder="Search tasks ..."
                 size="small"
                 value={searchQuery}
+                onChange={handleSearchChange}
                 fullWidth
                 InputProps={{
                   startAdornment: (
