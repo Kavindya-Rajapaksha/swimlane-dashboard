@@ -1,22 +1,18 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import TaskCard from "./TaskCard";
+import type { Task, Column as ColumnType, Category, User } from "@/utils/types";
 
 type ColumnProps = {
-  column: {
-    id: string;
-    title: string;
-    color: string;
-  };
-  tasks: any[];
-  categories: any[];
-  users: any[];
-  index: number;
+  column: ColumnType;
+  tasks: Task[];
+  categories: Category[];
+  users: User[];
 };
 
 const COLUMN_WIDTH = 290;
 
-const Column: React.FC<ColumnProps> = ({ column, tasks, categories, users, index }) => {
+const Column: React.FC<ColumnProps> = ({ column, tasks, categories, users }) => {
   const { setNodeRef } = useDroppable({
     id: column.id,
     data: {

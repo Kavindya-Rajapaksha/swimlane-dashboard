@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { DndContext, closestCenter, DragEndEvent, DragOverEvent } from "@dnd-kit/core";
+import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -9,6 +9,7 @@ import {
 import { taskData } from "../data/tasks";
 import Column from "./Column";
 import { useTaskStore } from "../store/useTaskStore";
+import type { Task, Column as ColumnType} from "@/utils/types";
 
 const tabData = [
   { label: "To Do", color: "#E5E7EB", textColor: "#374151" },
@@ -24,9 +25,9 @@ const Board = () => {
   const { filteredTasks, moveTask } = useTaskStore();
 
   const tasksByColumn = useMemo(() => {
-    const grouped: Record<string, any[]> = {};
-    taskData.columns.forEach(col => {
-      grouped[col.id] = filteredTasks.filter(task => task.columnId === col.id);
+    const grouped: Record<string, Task[]> = {};
+    taskData.columns.forEach((col: ColumnType) => {
+      grouped[col.id] = filteredTasks.filter((task: Task) => task.columnId === col.id);
     });
     return grouped;
   }, [filteredTasks]);
@@ -189,7 +190,6 @@ const Board = () => {
                   tasks={tasksByColumn[col.id] || []}
                   categories={taskData.categories}
                   users={taskData.users}
-                  index={idx}
                 />
               </SortableContext>
             </div>
