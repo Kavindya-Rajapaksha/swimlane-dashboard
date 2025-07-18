@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   List,
@@ -39,7 +39,6 @@ const SideBarContent = ({
       flexDirection: "column",
     }}
   >
-    {/* Close icon for mobile drawer */}
     {isMobile && (
       <Box
         sx={{
@@ -387,7 +386,19 @@ const SideBar = () => {
   const [boardsOpen, setBoardsOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [workspace, setWorkspace] = useState("Root folder");
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600); 
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleBoardsClick = () => {
     setBoardsOpen(!boardsOpen);
@@ -422,7 +433,6 @@ const SideBar = () => {
 
   return (
     <>
-      {/* Show menu icon on mobile only when drawer is closed */}
       {isMobile && !drawerOpen && (
         <IconButton
           onClick={() => setDrawerOpen(true)}
@@ -439,8 +449,12 @@ const SideBar = () => {
           <MenuIcon />
         </IconButton>
       )}
-      {/* Permanent sidebar on desktop, Drawer on mobile */}
-      {isMobile ? (
+      {!isMobile && (
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          {sidebarContent}
+        </Box>
+      )}
+      {isMobile && (
         <Drawer
           anchor="left"
           open={drawerOpen}
@@ -451,8 +465,6 @@ const SideBar = () => {
         >
           {sidebarContent}
         </Drawer>
-      ) : (
-        sidebarContent
       )}
     </>
   );
