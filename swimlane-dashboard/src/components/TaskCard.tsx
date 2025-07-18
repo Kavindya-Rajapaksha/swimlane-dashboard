@@ -84,7 +84,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, categories }) => {
         <Box display="flex" alignItems="center" gap={1} mb={1}>
           {task.attachments !== undefined && (
             <img
-              src="/assets/User Profile.svg"
+              src="/assets/User profile.svg"
               alt="plus"
               className="w-4 h-4"
             />

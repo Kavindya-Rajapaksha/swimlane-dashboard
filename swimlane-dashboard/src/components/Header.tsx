@@ -68,7 +68,7 @@ export default function Header() {
               >
                 Create
                 <img
-                  src="/assets/plus.svg"
+                  src="/assets/Plus.svg"
                   alt="plus"
                   className="w-5 h-5"
                 />
@@ -83,7 +83,7 @@ export default function Header() {
                   startAdornment: (
                     <InputAdornment position="start">
                       <img
-                        src="/assets/search.svg"
+                        src="/assets/Search.svg"
                         alt="search"
                         className="w-5 h-5"
                       />
@@ -137,7 +137,7 @@ export default function Header() {
               >
                 Create new board
                 <img
-                  src="/assets/plus.svg"
+                  src="/assets/Plus.svg"
                   alt="plus"
                   className="w-6 h-6"
                 />
@@ -153,7 +153,7 @@ export default function Header() {
                   startAdornment: (
                     <InputAdornment position="start">
                       <img
-                        src="/assets/search.svg"
+                        src="/assets/Search.svg"
                         alt="search"
                         className="w-6 h-6"
                       />
