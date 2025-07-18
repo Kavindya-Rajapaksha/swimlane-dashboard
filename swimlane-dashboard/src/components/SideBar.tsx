@@ -22,13 +22,31 @@ import {
   Close as CloseIcon,
 } from "@mui/icons-material";
 
+
+interface BoardItem {
+  name: string;
+  active: boolean;
+}
+
+interface SideBarContentProps {
+  boardsOpen: boolean;
+  handleBoardsClick: () => void;
+  boardItems: BoardItem[];
+  isMobile: boolean;
+  onClose: () => void;
+  workspace?: string;
+  handleWorkspaceChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
 const SideBarContent = ({
   boardsOpen,
   handleBoardsClick,
   boardItems,
   isMobile,
   onClose,
-}: any) => (
+  workspace,
+  handleWorkspaceChange,
+}: SideBarContentProps) => (
   <Box
     sx={{
       width: 288,
