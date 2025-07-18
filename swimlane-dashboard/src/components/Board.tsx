@@ -145,7 +145,7 @@ const Board = () => {
                   }}
                 >
                   <img
-                    src="/assets/Blackplus.svg"
+                    src="/assets/Black.svg"
                     alt="plus"
                     style={{ width: 24, height: 24 }}
                   />
