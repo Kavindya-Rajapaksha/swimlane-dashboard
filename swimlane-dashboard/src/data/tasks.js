@@ -244,12 +244,11 @@ export const taskData = {
   ]
 };
 
-// Helper functions for API simulation
 export const fetchTasks = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(taskData);
-    }, 500); // Simulate API delay
+    }, 500); 
   });
 };
 

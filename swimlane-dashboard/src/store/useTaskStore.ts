@@ -38,8 +38,8 @@ interface TaskStore {
 export const useTaskStore = create<TaskStore>()(
   persist(
     (set, get) => ({
-      tasks: JSON.parse(JSON.stringify(taskData.tasks)), // deep clone!
-      filteredTasks: JSON.parse(JSON.stringify(taskData.tasks)), // deep clone!
+      tasks: JSON.parse(JSON.stringify(taskData.tasks)), 
+      filteredTasks: JSON.parse(JSON.stringify(taskData.tasks)), 
       searchQuery: "",
 
       setSearchQuery: (query: string) => {
@@ -92,32 +92,25 @@ export const useTaskStore = create<TaskStore>()(
         }
       },
 
-      // FIXED: Properly handle task movement between columns
       moveTask: (taskId: string, toColumnId: string, toIndex: number) => {
         const { tasks } = get();
         const taskToMove = tasks.find((t) => t.id === taskId);
         if (!taskToMove) return;
 
-        // Create a copy of all tasks except the one being moved
         const tasksWithoutMoved = tasks.filter((t) => t.id !== taskId);
 
-        // Update the moved task's column
         const updatedTask = { ...taskToMove, columnId: toColumnId };
 
-        // Get tasks in the destination column (excluding the moved task)
         const destinationColumnTasks = tasksWithoutMoved.filter(
           (t) => t.columnId === toColumnId
         );
 
-        // Insert the moved task at the specified index
         destinationColumnTasks.splice(toIndex, 0, updatedTask);
 
-        // Get tasks from other columns (excluding the moved task)
         const otherColumnTasks = tasksWithoutMoved.filter(
           (t) => t.columnId !== toColumnId
         );
 
-        // Combine all tasks: other columns + updated destination column
         const reorderedTasks = [...otherColumnTasks, ...destinationColumnTasks];
 
         set({ tasks: reorderedTasks });

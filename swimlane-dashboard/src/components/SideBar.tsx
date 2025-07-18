@@ -390,7 +390,7 @@ const SideBar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 600); // or your chosen breakpoint
+      setIsMobile(window.innerWidth < 600); 
     };
 
     handleResize();

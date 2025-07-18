@@ -1,4 +1,3 @@
-// src/components/Column.tsx
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import TaskCard from "./TaskCard";
@@ -38,7 +37,7 @@ const Column: React.FC<ColumnProps> = ({ column, tasks, categories, users, index
         alignItems: "center",
         boxSizing: "border-box",
         padding: 5,
-        minHeight: 400, // Ensure column has minimum height for dropping
+        minHeight: 400, 
       }}
       data-column-id={column.id}
     >

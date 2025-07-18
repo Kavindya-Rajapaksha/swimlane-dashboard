@@ -23,7 +23,6 @@ const TAB_HEIGHT = 70;
 const Board = () => {
   const { filteredTasks, moveTask } = useTaskStore();
 
-  // Memoize tasks by column to prevent unnecessary re-renders
   const tasksByColumn = useMemo(() => {
     const grouped: Record<string, any[]> = {};
     taskData.columns.forEach(col => {
@@ -42,7 +41,6 @@ const Board = () => {
     
     if (!activeTask) return;
 
-    // If dropped on a column header/container
     if (over.data?.current?.type === "column") {
       const toColumnId = over.id as string;
       const toColumnTasks = tasksByColumn[toColumnId] || [];
@@ -50,7 +48,6 @@ const Board = () => {
       return;
     }
 
-    // If dropped on another task
     const overTaskId = over.id as string;
     const overTask = filteredTasks.find(task => task.id === overTaskId);
     
@@ -60,13 +57,11 @@ const Board = () => {
     const toColumnTasks = tasksByColumn[toColumnId] || [];
     const overIndex = toColumnTasks.findIndex(task => task.id === overTaskId);
     
-    // If dropping in the same column, calculate the correct index
     if (activeTask.columnId === toColumnId) {
       const activeIndex = toColumnTasks.findIndex(task => task.id === activeTaskId);
       const newIndex = overIndex > activeIndex ? overIndex : overIndex;
       moveTask(activeTaskId, toColumnId, newIndex);
     } else {
-      // Moving to different column
       moveTask(activeTaskId, toColumnId, overIndex);
     }
   };
@@ -81,7 +76,7 @@ const Board = () => {
         style={{
           display: "flex",
           flexDirection: "row",
-          alignItems: "flex-start", // Changed from "center" to "flex-start"
+          alignItems: "flex-start", 
           overflowX: "auto",
           width: "100%",
           background: "#f7f8fa",
