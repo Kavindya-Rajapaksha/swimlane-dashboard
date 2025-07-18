@@ -39,3 +39,18 @@ body::-webkit-scrollbar {
 .custom-scrollbar:active::-webkit-scrollbar-thumb {
   opacity: 1;
 }
+
+/* Responsive board columns container: y-axis scroll always, x-axis scroll only on md and below */
+.board-columns-container {
+  overflow-y: auto;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  height: 100vh;
+}
+
+@media (min-width: 769px) {
+  .board-columns-container {
+    overflow-x: visible;
+    flex-wrap: wrap;
+  }
+}

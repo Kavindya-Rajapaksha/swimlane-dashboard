@@ -1,8 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Swimlane Dashboard
 
-## Getting Started
+A modern, drag-and-drop project management dashboard built with Next.js, React, Zustand, Material UI, and Tailwind CSS. The Swimlane Dashboard helps teams organize, track, and manage tasks visually using swimlanes and columns, similar to a Kanban board.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- **Visual Task Management:** Organize tasks into columns (To Do, In Progress, Approved, Reject) with drag-and-drop support.
+- **Project Overview:** View project cards with status, team members, and quick actions.
+- **Sidebar Navigation:** Access boards, messages, calendar, team members, and support from a responsive sidebar.
+- **Task Details:** Each task supports categories, assignees, attachments, comments, due dates, priorities, and more.
+- **User Avatars:** Visual representation of team members assigned to tasks.
+- **Persistent State:** Uses Zustand for state management and persistence.
+- **Responsive UI:** Built with Material UI and Tailwind CSS for a modern, mobile-friendly experience.
+
+---
+
+## 📦 Tech Stack
+
+- [Next.js](https://nextjs.org/) 15+
+- [React](https://react.dev/) 19+
+- [Material UI](https://mui.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [dnd-kit](https://dndkit.com/) (drag-and-drop)
+- TypeScript
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone <repo-url>
+cd swimlane-dashboard
+npm install # or yarn or pnpm or bun
+```
+
+### Running the Development Server
 
 ```bash
 npm run dev
@@ -14,23 +56,39 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Folder Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/           # Next.js app directory (pages, layout, global styles)
+  components/    # Reusable React components (Board, Column, TaskCard, etc.)
+  data/          # Static data (tasks, users, columns)
+  store/         # Zustand state management
+  theme/         # Theme and color definitions
+  utils/         # Utility functions
+public/assets/   # SVG icons and images
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ✨ Credits
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Next.js](https://nextjs.org/)
+- [Material UI](https://mui.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [dnd-kit](https://dndkit.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
