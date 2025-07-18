@@ -36,7 +36,7 @@ export default function Header() {
 >
           <div className="flex items-center flex-shrink-0">
             <img
-              src="/assets/logo.svg"
+              src="/assets/BoardApp.svg"
               alt="Logo"
               className="h-24 w-40 hidden md:block"
               style={{ minWidth: 32, minHeight: 32 }}
