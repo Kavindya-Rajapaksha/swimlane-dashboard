@@ -44,8 +44,6 @@ const SideBarContent = ({
   boardItems,
   isMobile,
   onClose,
-  workspace,
-  handleWorkspaceChange,
 }: SideBarContentProps) => (
   <Box
     sx={{
@@ -211,7 +209,7 @@ const SideBarContent = ({
       </ListItem>
       <Collapse in={boardsOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {boardItems.map((item: any, index: any) => (
+          {boardItems.map((item: BoardItem, index: number) => (
             <ListItem key={index} disablePadding>
               <ListItemButton
                 sx={{
@@ -422,7 +420,7 @@ const SideBar = () => {
     setBoardsOpen(!boardsOpen);
   };
 
-  const handleWorkspaceChange = (event: any) => {
+  const handleWorkspaceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setWorkspace(event.target.value);
   };
 
